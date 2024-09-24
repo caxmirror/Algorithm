@@ -5,12 +5,13 @@ class Solution:
         
         for i in range(len(s)):
             if s[i] == '(':
-                stack.append(i)  # Push the index of '('
+                stack.append(i)  # Push the index of '`('
             else:
                 stack.pop()  # Try to match the current ')' with the last unmatched '('
                 if not stack:
                     stack.append(i)  # No matching '(', so push the index of ')'
                 else:
                     max_length = max(max_length, i - stack[-1])  # Update max length of valid parentheses
+                    # use max so that logest valid parenthses were found
         
         return max_length
