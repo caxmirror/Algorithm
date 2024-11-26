@@ -332,5 +332,16 @@ class UnionFind:
 ```
 
 ---
+11.preorder traversal
+def preorder_traversal(root: TreeNode) -> List[int]:
+    result = []
+    def traverse(node):
+        if not node:
+            return
+        result.append(node.val)  # 访问根节点
+        traverse(node.left)      # 递归访问左子树
+        traverse(node.right)     # 递归访问右子树
+    traverse(root)
+    return result
 
 Each pattern provides a base template for solving common algorithmic problems effectively and can be adapted to fit specific problem requirements.
