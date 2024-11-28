@@ -1,3 +1,31 @@
+# time: V + E
+# space: V + E
+from collections import deque
+class Solution_best_me:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # graph
+        # indegree
+        graph = {i: [] for i in range(numCourses)} # remember
+        indegree = {i: 0 for i in range(numCourses)}
+        for course, prerequisite in prerequisites:
+            indegree[course] += 1
+            graph[prerequisite].append(course)
+        
+        queue = deque(node for node in graph if indegree[node] == 0)
+        topo_path = []
+        while queue:
+            node = queue.popleft()
+            topo_path.append(node)
+            for neighbour in graph[node]:
+                indegree[neighbour] -= 1
+                if indegree[neighbour] == 0:
+                    queue.append(neighbour)
+        
+        if len(topo_path) == numCourses: 
+            return True
+        else: 
+            return False
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         preMap = { i: [] for i in range(numCourses)} # 1.initialize dict

@@ -121,6 +121,7 @@ heapq.heapify(nums)  # Turns list into a min-heap in-place
 # Getting the smallest elements
 smallest = heapq.heappop(nums)  # Pops the smallest item
 k_smallest = heapq.nsmallest(3, nums)  # Gets the 3 smallest items
+k_largest = heapq.nlargest(3, nums)
 
 # Using max heap by inverting values
 max_heap = [-x for x in nums]
@@ -211,7 +212,6 @@ for i, num in enumerate(nums):
     print(i, num)  # Prints index and element
 ```
 
-
 ### 11. **Basic Type Conversion Functions**
 
 #### `int(x, base=10)`
@@ -269,3 +269,12 @@ def fibonacci(n):
 3. **Efficiency Gain**: Without `lru_cache`, calculating `fibonacci(n)` requires recalculating values multiple times, making it very inefficient (exponential time complexity). With caching, each Fibonacci number is computed only once, turning the complexity into \(O(n)\).
 
 This caching strategy can be highly effective for problems involving repeated calculations or overlapping subproblems, such as dynamic programming.
+
+13.4种取整函数 
+```python
+math.floor() == //; 
+math.ceil()==// + 1; 
+round(); 
+int()  #toward 0
+```
+

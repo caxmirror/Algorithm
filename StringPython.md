@@ -97,7 +97,7 @@ words = s.rsplit(" ", 1)    # ['hello world', 'everyone']
 ```python
 # Joins elements of an iterable into a single string with the specified delimiter.
 words = ["hello", "world"]
-sentence = " ".join(words)  # "hello world"
+sentence = " ".join(words)  # "hello world", " " is the interval of each word
 ```
 
 ---
