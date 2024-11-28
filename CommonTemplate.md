@@ -333,6 +333,7 @@ class UnionFind:
 
 ---
 11.preorder traversal
+```python
 def preorder_traversal(root: TreeNode) -> List[int]:
     result = []
     def traverse(node):
@@ -343,5 +344,44 @@ def preorder_traversal(root: TreeNode) -> List[int]:
         traverse(node.right)     # 递归访问右子树
     traverse(root)
     return result
+
+# stack solution preorder
+    if not root:
+        return []
+    
+    stack = [root]  # Start with the root node on the stack
+    result = []
+
+    while stack:
+        # Pop the current node
+        current = stack.pop()
+        result.append(current.val)  # Visit the node
+
+        # Push right child first so that left is processed first
+        if current.right:
+            stack.append(current.right)
+        if current.left:
+            stack.append(current.left)
+    
+    return result
+
+# stack solution: inorder
+    stack = []
+    result = []
+    current = root
+
+    while current or stack:
+        # Reach the leftmost node of the current subtree
+        while current:
+            stack.append(current)
+            current = current.left
+
+        # Current is None at this point, so backtrack
+        current = stack.pop()
+        result.append(current.val)  # Process the node (root)
+
+        # Visit the right subtree
+        current = current.right
+```
 
 Each pattern provides a base template for solving common algorithmic problems effectively and can be adapted to fit specific problem requirements.

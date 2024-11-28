@@ -74,7 +74,6 @@ l, r = 1, 3
 result = prefix[r + 1] - prefix[l]
 print(result)  # 输出 9（2 + 3 + 4）
 
-
 # 差分数组
 nums = [0] * 5
 diff = [0] * (len(nums) + 1)
