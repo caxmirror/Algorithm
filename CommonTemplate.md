@@ -190,6 +190,7 @@ def bfs(matrix, start):
 ```
 
 #### BFS for general case
+# 直接在deque括号内写的collections会被分开成element存到queue中，需要先创建deque，再append
 ```python
 def bfs(initial_state, target_state):
     queue = deque([(initial_state, 0)])  # Each element is (state, depth/steps)
