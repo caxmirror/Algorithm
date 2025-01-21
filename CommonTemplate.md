@@ -345,6 +345,24 @@ def preorder_traversal(root: TreeNode) -> List[int]:
         traverse(node.right)     # 递归访问右子树
     traverse(root)
     return result
+# level order traversal
+def level_order(root):
+    if not root:
+        return []
+    
+    result = []
+    queue = deque([root])  # 初始化队列，将根节点入队
+
+    while queue:
+        node = queue.popleft()  # 取出队首节点
+        result.append(node.val)
+        
+        if node.left:
+            queue.append(node.left)  # 左子节点入队
+        if node.right:
+            queue.append(node.right)  # 右子节点入队
+
+    return result
 
 # stack solution preorder
     if not root:
