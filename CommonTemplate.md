@@ -402,5 +402,14 @@ def level_order(root):
         # Visit the right subtree
         current = current.right
 ```
+---
+12.heap
+1.如何让heappop出去的元素隔一次再回来(防止连续地输出最大值)
+2.do not use nsmallest(), not efficient in time or space
 
+```python
+heapq.heapify()
+heapq.heappush()
+heapq.heappop()
+```
 Each pattern provides a base template for solving common algorithmic problems effectively and can be adapted to fit specific problem requirements.
