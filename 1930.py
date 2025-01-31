@@ -1,3 +1,21 @@
+# time: n
+# space: 1
+class Solution_best:
+    def countPalindromicSubsequence(self, s: str) -> int:
+        left = {}
+        right = {}
+        for i in range(len(s)):
+            if s[i] not in left:
+                left[s[i]] = i
+            right[s[i]] = i
+        
+        count = 0
+        for char in left:
+            if right[char] > left[char]:
+                count += len(set(s[left[char] + 1 : right[char]])) # set(string) will set each char in the string
+        return count
+
+        
 # t: 26 * n = n
 # s: 26 * n = n
 class Solution:
