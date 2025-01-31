@@ -2,7 +2,7 @@
 # Practical LeetCode Python Functions and Manipulations
 
 ### 1. **List Manipulations**
-
+1.[] != None
 #### Sorting a List
 ```python
 nums = [3, 1, 4, 1, 5]
@@ -35,7 +35,7 @@ total_sum = sum(nums)
 ---
 
 ### 2. **String Manipulations**
-
+1."" != None
 #### Splitting and Joining Strings
 ```python
 s = "hello world"

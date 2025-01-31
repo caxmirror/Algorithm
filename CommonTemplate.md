@@ -190,6 +190,7 @@ def bfs(matrix, start):
 ```
 
 #### BFS for general case
+# 直接在deque括号内写的collections会被分开成element存到queue中，需要先创建deque，再append
 ```python
 def bfs(initial_state, target_state):
     queue = deque([(initial_state, 0)])  # Each element is (state, depth/steps)
@@ -344,6 +345,24 @@ def preorder_traversal(root: TreeNode) -> List[int]:
         traverse(node.right)     # 递归访问右子树
     traverse(root)
     return result
+# level order traversal
+def level_order(root):
+    if not root:
+        return []
+    
+    result = []
+    queue = deque([root])  # 初始化队列，将根节点入队
+
+    while queue:
+        node = queue.popleft()  # 取出队首节点
+        result.append(node.val)
+        
+        if node.left:
+            queue.append(node.left)  # 左子节点入队
+        if node.right:
+            queue.append(node.right)  # 右子节点入队
+
+    return result
 
 # stack solution preorder
     if not root:
@@ -383,5 +402,14 @@ def preorder_traversal(root: TreeNode) -> List[int]:
         # Visit the right subtree
         current = current.right
 ```
+---
+12.heap
+1.如何让heappop出去的元素隔一次再回来(防止连续地输出最大值)
+2.do not use nsmallest(), not efficient in time or space
 
+```python
+heapq.heapify()
+heapq.heappush()
+heapq.heappop()
+```
 Each pattern provides a base template for solving common algorithmic problems effectively and can be adapted to fit specific problem requirements.
