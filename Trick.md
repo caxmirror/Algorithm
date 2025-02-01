@@ -1,0 +1,1 @@
+if dic_window == dic_s1: # 可以直接判断两个dic内容相同

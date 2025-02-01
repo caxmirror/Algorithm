@@ -1,4 +1,4 @@
-1.monotonic stack 找每个元素左边第一个比它小的元素位置
+1. monotonic stack 找每个元素左边第一个比它小的元素位置
 储存的stack可以理解为包含远处的最大值，以及稍近一点稍大一点的值，因此能够找到元素左边第一个比他大的值
 ```python
 
@@ -21,9 +21,40 @@ def monotonic_stack(arr):
     
     return result
 ```
-class Solution 
+2. Monotonic Deque (Sliding Window Maximum)
+A monotonic deque is useful for maintaining the max/min in a sliding window. 
+```python
+from collections import deque
 
-2.有向无环图，topological sort，使用入度和graph作为基本数据结构
+def sliding_window_max(nums, k):
+    dq = deque()
+    result = []
+
+    for i in range(len(nums)):
+        # Remove elements out of window range
+        while dq and dq[0] < i - k + 1:
+            dq.popleft()
+
+        # Maintain decreasing order in deque (remove smaller elements)
+        while dq and nums[dq[-1]] <= nums[i]:
+            dq.pop()
+
+        dq.append(i)
+
+        # Append max of current window to result
+        if i >= k - 1:
+            result.append(nums[dq[0]])
+
+    return result
+
+# Example
+nums = [1, 3, -1, -3, 5, 3, 6, 7]
+k = 3
+print(sliding_window_max(nums, k))  # Output: [3, 3, 5, 5, 6, 7]
+
+```
+
+3. 有向无环图，topological sort，使用入度和graph作为基本数据结构
 ```python
 from collections import deque
 
@@ -58,7 +89,7 @@ graph = {
 }
 ```
 
-3.prefix sum用来计算区间和，以及差分数组操作
+4.prefix sum用来计算区间和，以及差分数组操作
 ```python
 # 区间和
 nums = [1, 2, 3, 4, 5]
