@@ -18,6 +18,32 @@ def binary_search(nums, target):
         else:
             right = mid - 1
     return -1  # Target not found
+
+def lower_bound(left: int, right: int, P) -> int:
+    """
+    在闭区间 [left, right] 上二分，找最小的 x 使 P(x) 为真。
+    假设答案一定存在。如果不一定, 可以离开二分之后或者进入二分之前检查
+    """
+    while left < right:                     # 只要区间长度 ≥2 就继续
+        mid = (left + right) // 2           # 向下取整
+        if P(mid):                          # mid 满足条件，答案 ≤ mid
+            right = mid                     # 保留 mid
+        else:                               # mid 不满足，答案 > mid
+            left = mid + 1
+    return left                             # left == right
+
+def upper_bound(left: int, right: int, P) -> int:
+    """
+    在 [left, right] 上二分，找最大使 P(x) 为真的 x。
+    至少保证存在一个可行解。
+    """
+    while left < right:
+        mid = (left + right) // 2
+        if P(mid):                          # mid 可行，继续右侧找更大
+            left = mid + 1
+        else:                               # mid 不行，答案 < mid
+            right = mid
+    return left - 1                         # 回退一步
 ```
 
 ---
