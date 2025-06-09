@@ -281,16 +281,18 @@ def fibonacci(n):
 
 #### Knapsack Problem
 ```python
-def knapsack(weights, values, capacity):
-    n = len(weights)
-    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
-    for i in range(1, n + 1):
-        for w in range(capacity + 1):
-            if weights[i-1] <= w:
-                dp[i][w] = max(dp[i-1][w], dp[i-1][w - weights[i-1]] + values[i-1])
-            else:
-                dp[i][w] = dp[i-1][w]
-    return dp[n][capacity]
+# 0/1 Knapsack  -----------------------
+for i in range(N):                  # 依次遍历每件物品
+    w, v = weight[i], value[i]
+    for j in range(W, w-1, -1):     # **容量 j 逆序递减**
+        dp[j] = max(dp[j], dp[j-w] + v)
+
+# Complete Knapsack  ------------------
+for i in range(N):
+    w, v = weight[i], value[i]
+    for j in range(w, W+1):         # **容量 j 正序递增**
+        dp[j] = max(dp[j], dp[j-w] + v)
+
 ```
 
 ---
