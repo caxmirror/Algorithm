@@ -40,12 +40,12 @@ def upper_bound(left: int, right: int, P) -> int:
 若答案可能不存在，在入口或出口加一次检查即可: if !P(left) return -1
     """
     while left < right:
-        mid = (left + right) // 2
+        mid = (left + right + 1) // 2 # 要点2!!! 找upper bound右移
         if P(mid):                          # mid 可行，继续右侧找更大
             left = mid + 1                    # 要点1!!! left = mid + 1 lower和upper bound都是这样的
         else:                               # mid 不行，答案 < mid
             right = mid
-    return left - 1                         # 要点2!!! 回退一步, 找upper bound回退一步
+    return left                         
 ```
 
 ---
