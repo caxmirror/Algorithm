@@ -21,7 +21,7 @@ def binary_search(nums, target):
 
 def lower_bound(left: int, right: int, P) -> int:
     """
-    在闭区间 [left, right] 上二分，找最小的 x 使 P(x) 为真。
+    在闭开区间 [left, right) 上二分，找最小的 x 使 P(x) 为真。
     假设答案一定存在。如果不一定, 可以离开二分之后或者进入二分之前检查
 若答案可能不存在，在入口或出口加一次检查即可: if !P(right) return -1
     """
@@ -35,17 +35,17 @@ def lower_bound(left: int, right: int, P) -> int:
 
 def upper_bound(left: int, right: int, P) -> int:
     """
-    在 [left, right] 上二分，找最大使 P(x) 为真的 x。
+    在 [left, right) 上二分，找最大使 P(x) 为真的 x。注意right选择len(array), 包括范围
     至少保证存在一个可行解。
 若答案可能不存在，在入口或出口加一次检查即可: if !P(left) return -1
     """
-    while left < right:
-        mid = (left + right + 1) // 2 # 要点2!!! 找upper bound右移
+    while left < right: # 要点3!!! right是len(array)
+        mid = (left + right) // 2 
         if P(mid):                          # mid 可行，继续右侧找更大
             left = mid + 1                    # 要点1!!! left = mid + 1 lower和upper bound都是这样的
         else:                               # mid 不行，答案 < mid
             right = mid
-    return left                         
+    return left - 1                     # 要点2!!! 找upper bound右移
 ```
 
 ---
